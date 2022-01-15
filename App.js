@@ -1,15 +1,18 @@
+// importing library functions
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
 
+// importing other functions
+import Upload from './UploadImage';
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Meat Ur Meat lol</Text>
+      <Text>Meat Ur Meat</Text>
       <Button title="Camera" />
-      <Button title="Upload" />
+      <Upload />
       <StatusBar style="auto" />
     </View>
   );
@@ -34,18 +37,6 @@ function App() {
 export default App;
 
 
-// function for when user selects "camera"
-const Camera = (props) => {
-
-}
-
-
-// function for when user selects "upload"
-
-const Upload = (props) => {
-
-
-}
 
 
 const styles = StyleSheet.create({
