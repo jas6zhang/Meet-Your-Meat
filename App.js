@@ -19,7 +19,9 @@ export default function App() {
 
 
 // function for when user selects "camera"
-
+const Camera = (props) => {
+  
+}
 
 
 // function for when user selects "upload"
