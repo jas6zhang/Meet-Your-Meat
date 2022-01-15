@@ -1,5 +1,6 @@
 import * as ImagePicker from 'expo-image-picker';
 
+// https://blog.waldo.io/add-an-image-picker-react-native-app/ 
 
 // function that allows you to choose image from gallery
 
