@@ -7,7 +7,7 @@ import { Image, View, Platform, TouchableOpacity, Text, StyleSheet } from 'react
 
 // https://blog.waldo.io/add-an-image-picker-react-native-app/ 
 
-// function that allows you to choose image from gallery
+// function for when user chooses "upload" on home screen
 
 export default function Upload() {
   const [image, setImage] = useState(null);

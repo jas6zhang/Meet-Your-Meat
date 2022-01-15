@@ -7,16 +7,33 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // importing other functions
 import Upload from './UploadImage';
 
+
+// Homescreen function
+
 function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Meat Ur Meat</Text>
+      <Text>Meet Ur Meat</Text>
       <Button title="Camera" />
       <Upload />
       <StatusBar style="auto" />
     </View>
   );
 }
+
+// Meat selection screen function
+
+function MeatSelection() {
+  return (
+    <View>
+      <Text>Choose Your Meat</Text>
+      <Button title="Sizzling Steak" />
+      <Button title="Juicy Chicken" />
+      <Button title="Yummy Pork" />
+    </View>
+  );
+}
+
 
 // Stack function for multiple screens
 const Stack = createNativeStackNavigator();
