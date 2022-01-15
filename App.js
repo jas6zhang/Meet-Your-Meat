@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
 //import { NavigationContainer } from '@react-navigation/native'; 
 
+
 export default function App() {
   return (
     //<NavigationContainer>
@@ -13,6 +14,19 @@ export default function App() {
     </View>
     //</NavigationContainer>
   );
+}
+
+
+
+// function for when user selects "camera"
+
+
+
+// function for when user selects "upload"
+
+const Upload = (props) => {
+
+
 }
 
 
