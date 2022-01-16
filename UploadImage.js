@@ -39,7 +39,12 @@ export default function Upload() {
 
   
 
-  return <Button onPress={addImage} title="Upload" />;
+  return (<View>
+    {
+      image && <Image source={{ uri : image }} style={{ width: 200, height: 200 }} />
+    }
+    <Button onPress={addImage} title="Upload" />
+    </View>);
 }
 
 // Downsizes photo and uses Imgur API to

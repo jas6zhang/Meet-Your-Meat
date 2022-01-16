@@ -47,7 +47,7 @@ function ChickenPage() {
   return (
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
-      <Button title="Camera" />
+      <Upload />
       <Button title="Start Analysis" />
       <StatusBar style="auto" />
     </View>
