@@ -2,10 +2,8 @@
 
 import React from "react";
 import { Text, View, ImageStore, Vibration } from "react-native";
-import { CLIENT_ID, CLIENT_SECRET } from '.env';
 
-
-import { REACT_APP_CLIENT_SECRET, REACT_APP_CLIENT_SECRET } from "/.env";
+import { REACT_APP_CLIENT_ID, REACT_APP_CLIENT_SECRET } from "/.env";
 
 import {
   Camera,
@@ -73,7 +71,6 @@ export default class PredictFromCamera extends React.Component {
     }
   }
 
-<<<<<<< HEAD
     // Downsizes photo and uses Imgur API to
     // get a web url of photo, sends to Prediction API
     // (calls sendToMicrosoftPrediction)
@@ -102,42 +99,17 @@ export default class PredictFromCamera extends React.Component {
             xmlHttp.open("POST", "https://api.imgur.com/3/upload", true);
             xmlHttp.setRequestHeader(
                 "Authorization",
-                "Client-ID " + CLIENT_ID //IMGUR_API_ID
+                "Client-ID " + REACT_APP_CLIENT_ID //IMGUR_API_ID
             );
             data.append("type", "base64");
             data.append("image", manipulatedObj.base64);
             xmlHttp.send(data);
         } catch (error) {
             console.error(error);
-=======
-  // Downsizes photo and uses Imgur API to
-  // get a web url of photo, sends to Prediction API
-  // (calls sendToMicrosoftPrediction)
-  async sendToImgur(photoLoc) {
-    try {
-      // Use Image Manipulator to downsize image
-      let manipulatedObj = await ImageManipulator.manipulateAsync(
-        photoLoc,
-        [{ resize: { width: 200 } }],
-        { base64: true }
-      );
-      var xmlHttp = new XMLHttpRequest();
-      const data = new FormData();
-      xmlHttp.onreadystatechange = (e) => {
-        if (xmlHttp.readyState == 4) {
-          if (xmlHttp.status === 200) {
-            // Send Imgur link to photo to be sent to Prediction API
-            let imgur_json = JSON.parse(xmlHttp.responseText);
-            this.sendToMicrosoftPrediction(imgur_json.data.link);
-          } else {
-            // Debug errors
-            console.log(xmlHttp.responseJson);
-          }
->>>>>>> 4f53932cfca1dcce148ed2ed92434ca9ca427389
         }
       };
       xmlHttp.open("POST", "https://api.imgur.com/3/upload", true);
-      xmlHttp.setRequestHeader("Authorization", "Client-ID " + IMGUR_API_ID);
+      xmlHttp.setRequestHeader("Authorization", "Client-ID " + REACT_APP_CLIENT_ID);
       data.append("type", "base64");
       data.append("image", manipulatedObj.base64);
       xmlHttp.send(data);
