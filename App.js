@@ -89,19 +89,19 @@ function PorkPage() {
   )
 }
 
-function MeatSelection() {
+function MeatSelection({ navigation }) {
   return (
     <View>
       <Text>Choose Your Meat</Text>
       <Button
         title="Sizzling Steak"
-        onPress={() => navigation.push("SteakPage")}
+        onPress={() => navigation.navigate("SteakPage")}
       />
       <Button title="Juicy Chicken" 
-        onPress={() => navigation.push('ChickenPage')}
+        onPress={() => navigation.navigate('ChickenPage')}
       />
       <Button title="Yummy Pork" 
-        onPress={() => navigation.push('PorkPage')}
+        onPress={() => navigation.navigate('PorkPage')}
       />
     </View>
   );
@@ -112,7 +112,11 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: true
+        }}
+      >
         <Stack.Screen name="StartPage" component={StartPage} />
         <Stack.Screen name="MeatSelection" component={MeatSelection} />
         <Stack.Screen name="TakePicture" component={TakePicture} />
