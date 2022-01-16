@@ -2,12 +2,6 @@
 
 import React from "react";
 import { Text, View, ImageStore, Vibration } from "react-native";
-import {
-  REACT_APP_CLIENT_ID,
-  PREDICTION_KEY,
-  PREDICTION_URL,
-  CONTENT_TYPE,
-} from ".env";
 
 import {
   Camera,
@@ -16,6 +10,7 @@ import {
   Constants,
   ImageManipulator,
 } from "expo";
+
 
 export default class PredictFromCamera extends React.Component {
   static navigationOptions = {
@@ -103,7 +98,7 @@ export default class PredictFromCamera extends React.Component {
       xmlHttp.open("POST", "https://api.imgur.com/3/upload", true);
       xmlHttp.setRequestHeader(
         "Authorization",
-        "Client-ID " + REACT_APP_CLIENT_ID
+        "Client-ID " + '0a3d2bd65d89e8e'
       );
       data.append("type", "base64");
       data.append("image", manipulatedObj.base64);
@@ -116,11 +111,11 @@ export default class PredictFromCamera extends React.Component {
   // Uses Prediction API to process photo at a web url
   // and calls setNewPrediction
   async sendToMicrosoftPrediction(img_url) {
-    let response = await fetch(PREDICTION_URL, {
+    let response = await fetch('https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image', {
       method: "POST",
       headers: {
-        "Prediction-Key": PREDICTION_KEY,
-        "Content-Type": PREDICTION_URL,
+        "Prediction-Key": d397fe879edd433494726fab25579bee,
+        "Content-Type": application/octet-stream,
       },
       body: JSON.stringify({
         Url: img_url,

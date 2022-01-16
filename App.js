@@ -3,19 +3,21 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator, createAppContainer } from "react-navigation"; 
 
 // importing other functions
 import Upload from "./UploadImage";
 
 // Homescreen function
 
-require("dotenv").config();
+//require("dotenv").config();
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
-      <Button title="Camera" />
+      <Button title="Camera" 
+      onPress={() => navigation.AppNavigator()}/>
       {/* <Upload
         title="Go to Jane's profile"
         onPress={() => navigation.navigate("Profile", { name: "Jane" })}
@@ -107,6 +109,11 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
