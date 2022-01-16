@@ -24,10 +24,18 @@ let CONTENT_TYPE = process.env.CONTENT_TYPE;
 // PREDICTION_KEY=d397fe879edd433494726fab25579bee
 // CONTENT_TYPE=application/octet-stream
 
-import { Camera } from "expo-camera";
-import { Permissions } from "expo-permissions";
-import { FileSystem } from "expo-file-system";
-import { ImageManipulator } from "expo-image-manipulator";
+// import { Camera } from "expo-camera";
+// import { Permissions } from "expo-permissions";
+// import { FileSystem } from "expo-file-system";
+// import { ImageManipulator } from "expo-image-manipulator";
+import {
+  Camera,
+  Permissions,
+  FileSystem,
+  Constants,
+  ImageManipulator,
+} from "expo";
+
 
 export default class PredictFromCamera extends React.Component {
   static navigationOptions = {
@@ -115,7 +123,11 @@ export default class PredictFromCamera extends React.Component {
       xmlHttp.open("POST", "https://api.imgur.com/3/upload", true);
       xmlHttp.setRequestHeader(
         "Authorization",
+<<<<<<< HEAD
         "Client-ID " + "0a3d2bd65d89e8e"
+=======
+        "Client-ID " + '0a3d2bd65d89e8e'
+>>>>>>> c1fb250478ce6084425e93af0af09fa5bc1219ea
       );
       data.append("type", "base64");
       data.append("image", manipulatedObj.base64);
@@ -128,20 +140,16 @@ export default class PredictFromCamera extends React.Component {
   // Uses Prediction API to process photo at a web url
   // and calls setNewPrediction
   async sendToMicrosoftPrediction(img_url) {
-    let response = await fetch(
-      "https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image",
-      {
-        method: "POST",
-        headers: {
-          "Prediction-Key": "d397fe879edd433494726fab25579bee",
-          "Content-Type":
-            "https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image",
-        },
-        body: JSON.stringify({
-          Url: img_url,
-        }),
-      }
-    );
+    let response = await fetch('https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image', {
+      method: "POST",
+      headers: {
+        "Prediction-Key": "d397fe879edd433494726fab25579bee",
+        "Content-Type": "application/octet-stream",
+      },
+      body: JSON.stringify({
+        Url: img_url,
+      }),
+    });
     let bodyText = JSON.parse(response["_bodyText"]);
     let predictions = bodyText["predictions"];
     this.setNewPrediction(predictions);
