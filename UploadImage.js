@@ -1,6 +1,7 @@
 import * as ImagePicker from "expo-image-picker";
 import { Button } from "react-native";
 //import PredictFromCamera from "./components/PredictFromCamera";
+import * as ImageManipulator from "expo-image-manipulator";
 
 import React, { useState, useEffect } from "react";
 import {
@@ -39,7 +40,15 @@ export default function Upload() {
   return (
     <View>
       {image && (
-        <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+        <Image
+          source={{ uri: image }}
+          style={{
+            width: 200,
+            height: 200,
+            borderColor: "black",
+            borderWidth: 3,
+          }}
+        />
       )}
       <Button onPress={addImage} title="Upload" />
       <StartAnalysis image={image} />
