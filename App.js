@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import * as Progress from "react-native-progress";
 
 // importing other functions
 import Upload from "./UploadImage";
@@ -29,12 +30,21 @@ function StartPage({ navigation }) {
 
 // picture options page
 
-function TakePicture() {
+// function TakePicture() {
+//   return (
+//     <View style={styles.container}>
+//       <Text>Meet Ur Meat</Text>
+//       <Button title="Camera" />
+//       <Upload />
+//       <StatusBar style="auto" />
+//     </View>
+//   );
+// }
+
+function LoadingPage() {
   return (
     <View style={styles.container}>
-      <Text>Meet Ur Meat</Text>
-      <Button title="Camera" />
-      <Upload />
+      <Text>Loading Analysis...</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -80,16 +90,13 @@ function MeatSelection({ navigation }) {
       <Text>Choose Your Meat</Text>
       <Button
         title="Sizzling Steak"
-        onPress={() => navigation.navigate("SteakPage")}
+        onPress={() => navigation.push("SteakPage")}
       />
       <Button
         title="Juicy Chicken"
-        onPress={() => navigation.navigate("ChickenPage")}
+        onPress={() => navigation.push("ChickenPage")}
       />
-      <Button
-        title="Yummy Pork"
-        onPress={() => navigation.navigate("PorkPage")}
-      />
+      <Button title="Yummy Pork" onPress={() => navigation.push("PorkPage")} />
     </View>
   );
 }
