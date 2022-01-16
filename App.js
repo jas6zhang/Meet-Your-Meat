@@ -7,7 +7,6 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
 // importing other functions
 import Upload from "./UploadImage";
-import AppNavigator from "./AppNavigator.js";
 
 // Homescreen function
 
