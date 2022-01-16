@@ -14,6 +14,15 @@ import {
 } from "react-native";
 import { NavigationHelpersContext } from "@react-navigation/core";
 
+
+import {
+  Camera,
+  Permissions,
+  FileSystem,
+  Constants,
+  ImageManipulator,
+} from "expo";
+
 // https://blog.waldo.io/add-an-image-picker-react-native-app/
 
 // function for when user chooses "upload" on home screen
@@ -30,11 +39,14 @@ export default function Upload() {
       quality: 1,
     });
 
-    sendToImgur(JSON.stringify(_image));
+    //sendToImgur(JSON.stringify(_image));
 
     if (!_image.cancelled) {
       setImage(_image.uri);
+
+      sendToMicrosoftPrediction('https://www.simplyrecipes.com/thmb/D36n4AKqg_LGsVkOjFkt_OIHkPM=/2000x1333/filters:fill(auto,1)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__05__Sous-Vide-Steak-LEAD-3-33b9edd4bc1c47faa86fd74e18b59cc8.jpg');
     }
+
   };
 
   
@@ -45,11 +57,17 @@ export default function Upload() {
     }
     <Button onPress={addImage} title="Upload" />
     <StartAnalysis image={image} />
+    
     </View>);
 }
 
 // function for 'start analysis'
 const StartAnalysis = (props) => {
+  //const [image, setImage] = useState(props.image);
+
+  //sendToImgur(JSON.stringify(props.image))
+
+
   return (
     <View>
       <Button title="Start Analysis" onPress={StartAnalysis}/>
@@ -99,16 +117,17 @@ const StartAnalysis = (props) => {
   // Uses Prediction API to process photo at a web url
   // and calls setNewPrediction
   async function sendToMicrosoftPrediction(img_url) {
-    let response = await fetch('https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image', {
+    let response = await fetch('https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/url', {
       method: "POST",
       headers: {
-        "Prediction-Key": d397fe879edd433494726fab25579bee,
-        "Content-Type": application/octet-stream,
+        "Prediction-Key": 'd397fe879edd433494726fab25579bee',
+        "Content-Type": 'application/octet-stream',
       },
       body: JSON.stringify({
         Url: img_url,
       }),
     });
+  
     let bodyText = JSON.parse(response["_bodyText"]);
     let predictions = bodyText["predictions"];
     setNewPrediction(predictions);
@@ -116,6 +135,10 @@ const StartAnalysis = (props) => {
 
   // Sets tagText to most probable tag
   function setNewPrediction(predictions) {
+    state = {
+      tagText: "none",
+    };
+
     let maxProb = 0;
     let bestTag = "None";
     for (let predMap of predictions) {
@@ -124,6 +147,21 @@ const StartAnalysis = (props) => {
         bestTag = predMap.tagName;
       }
     }
+
+    this.setState({
+      tagText: `AI says: ${bestTag}\nProbability: ${maxProb.toString()}`
+    });
+    console.log('reached');
+    this.resetPredictionInterval = setInterval(
+      this.resetPredictionText.bind(this),
+      20000
+    );
+
+    return (
+      <View>
+        <Text>{this.tagText}</Text>
+      </View>
+    );
   }
 
 
