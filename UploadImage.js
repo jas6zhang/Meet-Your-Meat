@@ -1,6 +1,6 @@
 import * as ImagePicker from "expo-image-picker";
 import { Button } from "react-native";
-import PredictFromCamera from "./components/PredictFromCamera";
+//import PredictFromCamera from "./components/PredictFromCamera";
 
 import React, { useState, useEffect } from "react";
 import {
