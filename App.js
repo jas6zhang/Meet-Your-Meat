@@ -78,13 +78,13 @@ function MeatSelection() {
       <Text>Choose Your Meat</Text>
       <Button
         title="Sizzling Steak"
-        onPress={() => navigation.push("SteakPage")};
+        onPress={() => navigation.push("SteakPage")}
       />
       <Button title="Juicy Chicken" 
-        onPress={() => navigation.push('ChickenPage')};
+        onPress={() => navigation.push('ChickenPage')}
       />
       <Button title="Yummy Pork" 
-        onPress={() => navigation.push('PorkPage')};
+        onPress={() => navigation.push('PorkPage')}
       />
     </View>
   );
