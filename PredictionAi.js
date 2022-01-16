@@ -1,0 +1,1 @@
+// functions to send data to Azure to predict based on image
