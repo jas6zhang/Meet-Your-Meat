@@ -42,9 +42,19 @@ export default function Upload() {
         <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
       )}
       <Button onPress={addImage} title="Upload" />
+      <StartAnalysis image={image} />
     </View>
   );
 }
+
+// function for 'start analysis'
+const StartAnalysis = (props) => {
+  return (
+    <View>
+      <Button title="Start Analysis" onPress={StartAnalysis} />
+    </View>
+  );
+};
 
 // Downsizes photo and uses Imgur API to
 // get a web url of photo, sends to Prediction API
