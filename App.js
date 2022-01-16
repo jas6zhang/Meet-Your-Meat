@@ -48,10 +48,7 @@ function ChickenPage() {
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
       <Button title="Camera" />
-      {/* <Upload
-        title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      /> */}
+      <Button title="Start Analysis" />
       <StatusBar style="auto" />
     </View>
 
@@ -64,10 +61,7 @@ function SteakPage() {
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
       <Button title="Camera" />
-      {/* <Upload
-        title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      /> */}
+      <Button title="Start Analysis" />
       <StatusBar style="auto" />
     </View>
 
@@ -80,10 +74,7 @@ function PorkPage() {
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
       <Button title="Camera" />
-      {/* <Upload
-        title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      /> */}
+      <Button title="Start Analysis" />
       <StatusBar style="auto" />
     </View>
   )
