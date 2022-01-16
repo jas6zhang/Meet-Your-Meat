@@ -2,6 +2,8 @@
 
 import React from "react";
 import { Text, View, ImageStore, Vibration } from "react-native";
+import { CLIENT_ID, CLIENT_SECRET } from '.env';
+
 
 import {
     Camera,
@@ -99,7 +101,7 @@ export default class PredictFromCamera extends React.Component {
             xmlHttp.open("POST", "https://api.imgur.com/3/upload", true);
             xmlHttp.setRequestHeader(
                 "Authorization",
-                "Client-ID " + IMGUR_API_ID
+                "Client-ID " + CLIENT_ID //IMGUR_API_ID
             );
             data.append("type", "base64");
             data.append("image", manipulatedObj.base64);
