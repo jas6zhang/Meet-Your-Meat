@@ -2,20 +2,32 @@
 
 import React from "react";
 import { Text, View, ImageStore, Vibration } from "react-native";
-import {
-  REACT_APP_CLIENT_ID,
-  PREDICTION_KEY,
-  PREDICTION_URL,
-  CONTENT_TYPE,
-} from ".env";
 
-import {
-  Camera,
-  Permissions,
-  FileSystem,
-  Constants,
-  ImageManipulator,
-} from "expo";
+// require("dotenv").config();
+
+// import {
+//   REACT_APP_CLIENT_ID,
+//   PREDICTION_KEY,
+//   PREDICTION_URL,
+//   CONTENT_TYPE,
+// } from "@env";
+
+let REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+let PREDICTION_KEY = process.env.PREDICTION_KEY;
+let PREDICTION_URL = process.env.PREDICTION_URL;
+let CONTENT_TYPE = process.env.CONTENT_TYPE;
+
+// REACT_APP_CLIENT_ID=0a3d2bd65d89e8e
+// REACT_APP_CLIENT_SECRET=f6a7821e20e019e464ea402d3c8531e707b0f71d
+
+// PREDICTION_URL=https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image
+// PREDICTION_KEY=d397fe879edd433494726fab25579bee
+// CONTENT_TYPE=application/octet-stream
+
+import { Camera } from "expo-camera";
+import { Permissions } from "expo-permissions";
+import { FileSystem } from "expo-file-system";
+import { ImageManipulator } from "expo-image-manipulator";
 
 export default class PredictFromCamera extends React.Component {
   static navigationOptions = {
@@ -103,7 +115,7 @@ export default class PredictFromCamera extends React.Component {
       xmlHttp.open("POST", "https://api.imgur.com/3/upload", true);
       xmlHttp.setRequestHeader(
         "Authorization",
-        "Client-ID " + REACT_APP_CLIENT_ID
+        "Client-ID " + "0a3d2bd65d89e8e"
       );
       data.append("type", "base64");
       data.append("image", manipulatedObj.base64);
@@ -116,16 +128,20 @@ export default class PredictFromCamera extends React.Component {
   // Uses Prediction API to process photo at a web url
   // and calls setNewPrediction
   async sendToMicrosoftPrediction(img_url) {
-    let response = await fetch(PREDICTION_URL, {
-      method: "POST",
-      headers: {
-        "Prediction-Key": PREDICTION_KEY,
-        "Content-Type": PREDICTION_URL,
-      },
-      body: JSON.stringify({
-        Url: img_url,
-      }),
-    });
+    let response = await fetch(
+      "https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image",
+      {
+        method: "POST",
+        headers: {
+          "Prediction-Key": "d397fe879edd433494726fab25579bee",
+          "Content-Type":
+            "https://northcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/0bd36f77-e0bd-4ddf-a9ac-885ad5a02294/classify/iterations/Iteration2/image",
+        },
+        body: JSON.stringify({
+          Url: img_url,
+        }),
+      }
+    );
     let bodyText = JSON.parse(response["_bodyText"]);
     let predictions = bodyText["predictions"];
     this.setNewPrediction(predictions);
@@ -141,10 +157,10 @@ export default class PredictFromCamera extends React.Component {
         bestTag = predMap.tagName;
       }
     }
-    Vibration.vibrate();
-    // To give our app more personality, we created arrays of funny responses and chose
-    // a random response depending on what the tag was. Removed from this version
-    // to accommodate any named tags
+    // Vibration.vibrate();
+    // // To give our app more personality, we created arrays of funny responses and chose
+    // // a random response depending on what the tag was. Removed from this version
+    // // to accommodate any named tags
     this.setState({
       tagText: `AI says: ${bestTag}\nProbability: ${maxProb.toString()}`,
     });

@@ -6,20 +6,18 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // importing other functions
 import Upload from "./UploadImage";
+import PredictFromCamera from "./PredictionAi";
 
-// Homescreen function
+// HomeScreen function
 
-require("dotenv").config();
+// require("dotenv").config();
 
 function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
       <Button title="Camera" />
-      {/* <Upload
-        title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      /> */}
+      <Upload />
       <StatusBar style="auto" />
     </View>
   );
@@ -31,15 +29,10 @@ function ChickenPage() {
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
       <Button title="Camera" />
-      {/* <Upload
-        title="Go to Jane's profile"
-        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-      /> */}
+      <Upload />
       <StatusBar style="auto" />
     </View>
-
-  )
-
+  );
 }
 
 function SteakPage() {
@@ -53,9 +46,7 @@ function SteakPage() {
       /> */}
       <StatusBar style="auto" />
     </View>
-
-  )
-
+  );
 }
 
 function PorkPage() {
@@ -69,7 +60,7 @@ function PorkPage() {
       /> */}
       <StatusBar style="auto" />
     </View>
-  )
+  );
 }
 
 function MeatSelection() {
@@ -78,14 +69,13 @@ function MeatSelection() {
       <Text>Choose Your Meat</Text>
       <Button
         title="Sizzling Steak"
-        onPress={() => navigation.push("SteakPage")};
+        onPress={() => navigation.push("SteakPage")}
       />
-      <Button title="Juicy Chicken" 
-        onPress={() => navigation.push('ChickenPage')};
+      <Button
+        title="Juicy Chicken"
+        onPress={() => navigation.push("ChickenPage")}
       />
-      <Button title="Yummy Pork" 
-        onPress={() => navigation.push('PorkPage')};
-      />
+      <Button title="Yummy Pork" onPress={() => navigation.push("PorkPage")} />
     </View>
   );
 }
