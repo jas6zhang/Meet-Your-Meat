@@ -26,37 +26,69 @@ function HomeScreen() {
 }
 
 // Meat selection screen function
+function ChickenPage() {
+  return (
+    <View style={styles.container}>
+      <Text>Meet Ur Meat</Text>
+      <Button title="Camera" />
+      {/* <Upload
+        title="Go to Jane's profile"
+        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
+      /> */}
+      <StatusBar style="auto" />
+    </View>
+
+  )
+
+}
+
+function SteakPage() {
+  return (
+    <View style={styles.container}>
+      <Text>Meet Ur Meat</Text>
+      <Button title="Camera" />
+      {/* <Upload
+        title="Go to Jane's profile"
+        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
+      /> */}
+      <StatusBar style="auto" />
+    </View>
+
+  )
+
+}
+
+function PorkPage() {
+  return (
+    <View style={styles.container}>
+      <Text>Meet Ur Meat</Text>
+      <Button title="Camera" />
+      {/* <Upload
+        title="Go to Jane's profile"
+        onPress={() => navigation.navigate("Profile", { name: "Jane" })}
+      /> */}
+      <StatusBar style="auto" />
+    </View>
+  )
+}
 
 function MeatSelection() {
   return (
     <View>
       <Text>Choose Your Meat</Text>
-      <Button title="Sizzling Steak" />
-      <Button title="Juicy Chicken" />
-      <Button title="Yummy Pork" />
+      <Button
+        title="Sizzling Steak"
+        onPress={() => navigation.push("SteakPage")};
+      />
+      <Button title="Juicy Chicken" 
+        onPress={() => navigation.push('ChickenPage')};
+      />
+      <Button title="Yummy Pork" 
+        onPress={() => navigation.push('PorkPage')};
+      />
     </View>
   );
 }
-
-// function ChickenPage() {
-//   return (
-
-//   )
-
-// }
-
-// function SteakPage() {
-//   return (
-
-//   )
-
-// }
-
-// function PorkPage() {
-//   return (
-
-//   )
-// }
 // Stack function for multiple screens
 const Stack = createNativeStackNavigator();
 
@@ -66,7 +98,9 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
 
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="ChickenPage" component={ChickenPage} />
+        <Stack.Screen name="SteakPage" component={SteakPage} />
+        <Stack.Screen name="PorkPage" component={PorkPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
