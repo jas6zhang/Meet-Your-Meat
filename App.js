@@ -9,7 +9,7 @@ import Upload from "./UploadImage";
 
 // Homescreen function
 
-//require("dotenv").config();
+require("dotenv").config();
 
 function HomeScreen() {
   return (
