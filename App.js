@@ -3,25 +3,26 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createStackNavigator, createAppContainer } from "react-navigation"; 
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
 // importing other functions
 import Upload from "./UploadImage";
-import PredictFromCamera from "./PredictionAi";
+// import PredictFromCamera from "./PredictionAi";
 
 // HomeScreen function
 
 //require("dotenv").config();
 
-
 // official start page
 
 function StartPage({ navigation }) {
-  return(
+  return (
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
-      <Button title="Start"
-      onPress={() => navigation.navigate("MeatSelection")}/>
+      <Button
+        title="Start"
+        onPress={() => navigation.navigate("MeatSelection")}
+      />
     </View>
   );
 }
@@ -39,13 +40,12 @@ function TakePicture() {
   );
 }
 
-
 // Meat selection screen function
 function ChickenPage() {
   return (
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
-      <Button title="Camera" />
+      <Upload />
       <Button title="Start Analysis" />
       <StatusBar style="auto" />
     </View>
@@ -82,11 +82,13 @@ function MeatSelection({ navigation }) {
         title="Sizzling Steak"
         onPress={() => navigation.navigate("SteakPage")}
       />
-      <Button title="Juicy Chicken" 
-        onPress={() => navigation.navigate('ChickenPage')}
+      <Button
+        title="Juicy Chicken"
+        onPress={() => navigation.navigate("ChickenPage")}
       />
-      <Button title="Yummy Pork" 
-        onPress={() => navigation.navigate('PorkPage')}
+      <Button
+        title="Yummy Pork"
+        onPress={() => navigation.navigate("PorkPage")}
       />
     </View>
   );
@@ -99,7 +101,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: true
+          headerShown: true,
         }}
       >
         <Stack.Screen name="StartPage" component={StartPage} />
@@ -115,11 +117,6 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
 
 const styles = StyleSheet.create({
   container: {
