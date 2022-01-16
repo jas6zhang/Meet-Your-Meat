@@ -12,12 +12,26 @@ import Upload from "./UploadImage";
 
 //require("dotenv").config();
 
-function HomeScreen() {
+
+// official start page
+
+function StartPage({ navigation }) {
+  return(
+    <View style={styles.container}>
+      <Text>Meet Ur Meat</Text>
+      <Button title="Start"
+      onPress={() => navigation.navigate("MeatSelection")}/>
+    </View>
+  );
+}
+
+// picture options page
+
+function TakePicture() {
   return (
     <View style={styles.container}>
       <Text>Meet Ur Meat</Text>
-      <Button title="Camera" 
-      onPress={() => navigation.AppNavigator()}/>
+      <Button title="Camera" />
       {/* <Upload
         title="Go to Jane's profile"
         onPress={() => navigation.navigate("Profile", { name: "Jane" })}
@@ -26,6 +40,7 @@ function HomeScreen() {
     </View>
   );
 }
+
 
 // Meat selection screen function
 function ChickenPage() {
@@ -98,7 +113,9 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="StartPage" component={StartPage} />
+        <Stack.Screen name="MeatSelection" component={MeatSelection} />
+        <Stack.Screen name="TakePicture" component={TakePicture} />
 
         <Stack.Screen name="ChickenPage" component={ChickenPage} />
         <Stack.Screen name="SteakPage" component={SteakPage} />
